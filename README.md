@@ -7,6 +7,7 @@ Author: Andrew Mendez, 2025
 * `python -m venv my-venv`
 * `source my-venv/bin/activate`
 * `pip install -r requirements.txt`
+* `unzip tickets_joined.db.zip`
 
 # Steps to initalize repo
 * `pip install -e . `
