@@ -27,7 +27,7 @@ Here is the conversation history so far:
 Answer the question using the following retrieved context:
 Question: {question} 
 Context: {context} 
-If you don't know the answer, just say that you don't know. Answer in a personal, conversational tone.
+If the context does not provide the answer, say that you cant answer the question based on the documents in the vector database. Answer in a personal, conversational tone.
 """
 
 process_prompt = ChatPromptTemplate.from_template(process_template)

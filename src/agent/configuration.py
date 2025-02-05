@@ -17,7 +17,8 @@ class Configuration:
     # create assistants (https://langchain-ai.github.io/langgraph/cloud/how-tos/configuration_cloud/)
     # and when you invoke the graph
     my_configurable_param: str = "changeme"
-
+    apple: str = "apple"
+    question: str = 'question'
     @classmethod
     def from_runnable_config(
         cls, config: Optional[RunnableConfig] = None

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pydantic import BaseModel, Field
+from typing_extensions import TypedDict
+from typing import List, Dict
 
 @dataclass
 class FormatAns(BaseModel):
@@ -22,6 +24,27 @@ class Grade(BaseModel):
     """Binary score for relevance check to generate sql or do RAG."""
     binary_score: str = Field(description="Documents are relevant to the question, 'yes' or 'no'")
 
+class GraphState(TypedDict):
+    """
+    Represents the state of our graph.
+
+    Attributes:
+        question: The current user question.
+        history: List of messages (each is a dict with 'role' and 'content').
+        generation: LLM generation (assistant response).
+        structured_sql_query: Generated SQL query with user defined value.
+        sql_results: Data returned from SQL query (list of JSON dicts).
+        plan: LLM generated plan on how to generate the SQL query.
+        documents: List of documents.
+        sql_gen_check: Grade, a binary score ('yes' or 'no').
+    """
+    question: str
+    history: List[Dict[str, str]]
+    generation: str
+    structured_sql_query: FormatAns
+    sql_results: List[Dict]
+    plan: Plan
+    documents: List[str]
 
 @dataclass
 class State:
